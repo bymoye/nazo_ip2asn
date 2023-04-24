@@ -38,9 +38,20 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # - name: Install Boost
-      #   run: |
-      #     choco install boost-msvc-14.2
+      - name: Build Boost
+        id: boost
+        uses: egor-tensin/build-boost@v1
+        with:
+          version: 1.71.0
+          libraries: filesystem program_options system
+          platform: x64
+          configuration: Release
+
+      - name: Show paths
+        run: |
+          printf 'Boost has been unpacked to: %s\n' '${{ steps.boost.outputs.root }}'
+          printf 'Libraries can be found here: %s\n' '${{ steps.boost.outputs.librarydir }}'
+        shell: bash
 
       - name: Install dependencies
         run: |
