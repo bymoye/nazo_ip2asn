@@ -38,10 +38,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Download and install Boost
-        uses: MarkusJx/install-boost@v2.4.4
-        with:
-          boost_version: 1.73.0
+      - name: Install Boost
+        run: |
+          choco install boost --version 1.76.0
+          echo "BOOST_ROOT=$(Get-Item -Path Env:ChocolateyToolsLocation).Value\tools\boost\1.76.0" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Install dependencies
         run: |
