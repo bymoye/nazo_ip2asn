@@ -1,18 +1,20 @@
 from setuptools import setup, Extension
 from Cython.Build import cythonize
 from sys import platform
-
+import os
 
 def readme():
     with open("README.md") as f:
         return f.read()
 
-
+boost_include_dir = None
+include_dirs = []
 extra_compile_args = []
 extra_link_args = []
 
 if platform == "win32":
     extra_compile_args = ["/std:c++17", "/O2"]
+    boost_include_dir = os.environ.get("BOOST_ROOT")
 elif platform == "linux":
     extra_compile_args = ["-std=c++17", "-O3"]
     extra_link_args = ["-Wl,-O3"]
@@ -20,6 +22,8 @@ elif platform == "darwin":  # macOS
     extra_compile_args = ["-std=c++17", "-O3"]
     extra_link_args = ["-Wl,-dead_strip"]
 
+if boost_include_dir:
+    include_dirs.append(boost_include_dir)
 setup(
     name="nazo_rand",
     ext_modules=cythonize(
@@ -38,6 +42,7 @@ setup(
             "cdivision": True,
         },
     ),
+    include_dirs=include_dirs,
     author="bymoye",
     author_email="s3moye@gmail.com",
     version="0.0.1",
