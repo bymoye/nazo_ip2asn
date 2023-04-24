@@ -41,7 +41,7 @@ jobs:
       - name: Install Boost
         run: |
           choco install boost --version 1.82.0
-          echo "BOOST_ROOT=$(Get-Item -Path Env:ChocolateyToolsLocation).Value\tools\boost\1.76.0" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "BOOST_ROOT=$(Get-Item -Path Env:ChocolateyToolsLocation).Value\tools\boost\1.82.0" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Install dependencies
         run: |
