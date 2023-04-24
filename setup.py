@@ -25,7 +25,7 @@ setup(
     ext_modules=cythonize(
         Extension(
             name="",
-            sources=["ip2asn/ip2asn.pyx", "ip2asn/ipasn.hpp"],
+            sources=["ip2asn/ip2asn.pyx"],
             language="c++",
             extra_compile_args=extra_compile_args,
             extra_link_args=extra_link_args,
