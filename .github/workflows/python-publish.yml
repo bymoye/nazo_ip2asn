@@ -38,9 +38,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Boost
-        run: |
-          choco install boost-msvc-14.2
+      # - name: Install Boost
+      #   run: |
+      #     choco install boost-msvc-14.2
 
       - name: Install dependencies
         run: |
