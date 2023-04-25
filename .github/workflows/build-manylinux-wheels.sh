@@ -5,9 +5,17 @@ set -e -x
 PY_MAJOR=${PYTHON_VERSION%%.*}
 PY_MINOR=${PYTHON_VERSION#*.}
 
-yum update
-yum install -y epel-release
-yum install -y boost-devel
+# yum update
+# yum install -y epel-release
+# yum install -y boost-devel
+
+yum install -y wget
+
+wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
+tar -xzvf boost_1_81_0.tar.gz
+cd boost_1_81_0
+./bootstrap.sh --with-libraries=system,thread
+./b2 install
 
 ML_PYTHON_VERSION="cp${PY_MAJOR}${PY_MINOR}-cp${PY_MAJOR}${PY_MINOR}"
 if [ "${PY_MAJOR}" -lt "4" -a "${PY_MINOR}" -lt "8" ]; then
