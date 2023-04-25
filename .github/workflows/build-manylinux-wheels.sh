@@ -5,7 +5,9 @@ set -e -x
 PY_MAJOR=${PYTHON_VERSION%%.*}
 PY_MINOR=${PYTHON_VERSION#*.}
 
-apt-get update && apt-get install libboost-all-dev
+yum update
+yum install -y epel-release
+yum install -y boost-devel
 
 ML_PYTHON_VERSION="cp${PY_MAJOR}${PY_MINOR}-cp${PY_MAJOR}${PY_MINOR}"
 if [ "${PY_MAJOR}" -lt "4" -a "${PY_MINOR}" -lt "8" ]; then
