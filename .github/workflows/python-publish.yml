@@ -129,7 +129,7 @@ jobs:
           if [ ${{ matrix.os }} = 'windows-latest' ]; then
             choco install boost-msvc-14.3
           elif [ ${{ matrix.os }} = 'macos-latest' ]; then
-            brew install boost@1.81.0
+            brew install boost@1.76
           fi
 
       - name: Install Boost (linux)
