@@ -78,6 +78,9 @@ jobs:
         run: |
           pip install cython==0.29.34 --config-setting no_cython_compile=True --no-cache-dir
 
+      - name: Install Boost
+        run: sudo apt-get update && sudo apt-get install libboost-all-dev
+
       - name: Compile Cython extensions
         run: |
           python3 setup.py build_ext --inplace
