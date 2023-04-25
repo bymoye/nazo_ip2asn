@@ -5,6 +5,8 @@ set -e -x
 PY_MAJOR=${PYTHON_VERSION%%.*}
 PY_MINOR=${PYTHON_VERSION#*.}
 
+sudo apt-get update && sudo apt-get install libboost-all-dev
+
 ML_PYTHON_VERSION="cp${PY_MAJOR}${PY_MINOR}-cp${PY_MAJOR}${PY_MINOR}"
 if [ "${PY_MAJOR}" -lt "4" -a "${PY_MINOR}" -lt "8" ]; then
     ML_PYTHON_VERSION+="m"

@@ -121,6 +121,12 @@ jobs:
           pip install cython==0.29.34 --config-setting no_cython_compile=True --no-cache-dir
           python -m pip install --upgrade setuptools pip wheel
 
+      - name: Install Boost
+        if: "!startsWith(matrix.os, 'ubuntu')"
+        run: |
+          $boost_msvc_version = "14.3"
+          choco install boost-msvc-$boost_msvc_version
+
       - name: Compile Cython extensions
         run: |
           cython ip2asn/ip2asn.pyx
@@ -140,6 +146,9 @@ jobs:
         if: "!startsWith(matrix.os, 'ubuntu')"
         run: |
           python setup.py bdist_wheel
+        env:
+          BOOST_ROOT: C:\local\boost_1_81_0
+          BOOST_LIBRARYDIR: C:\local\boost_1_81_0\lib64-msvc-14.3\
 
       - uses: actions/upload-artifact@v1
         with:
