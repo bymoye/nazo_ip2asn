@@ -40,8 +40,7 @@ jobs:
 
       - name: Install Boost
         run: |
-          $boost_msvc_version = "14.3"
-          choco install boost-msvc-$boost_msvc_version
+          choco install boost-msvc-14.3
 
       - name: Install dependencies
         run: |
@@ -124,13 +123,12 @@ jobs:
           pip install cython==0.29.34 --config-setting no_cython_compile=True --no-cache-dir
           python -m pip install --upgrade setuptools pip wheel
 
-      - name: Install Boost
+      - name: Install Boost (non-linux)
         if: "!startsWith(matrix.os, 'ubuntu')"
         run: |
-          $boost_msvc_version = "14.3"
-          choco install boost-msvc-$boost_msvc_version
+          choco install boost-msvc-14.3
 
-      - name: Install Boost
+      - name: Install Boost (linux)
         if: startsWith(matrix.os, 'ubuntu')
         run: sudo apt-get update && sudo apt-get install libboost-all-dev
 
