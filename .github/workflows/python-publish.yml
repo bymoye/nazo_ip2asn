@@ -48,7 +48,7 @@ jobs:
 
       - name: Compile Cython extensions
         run: |
-          cython ip2asn/ip2asn.pyx
+          cython nazo_ip2asn/ip2asn.pyx
           python setup.py build_ext --inplace
         env:
           BOOST_ROOT: C:\local\boost_1_81_0
@@ -143,7 +143,7 @@ jobs:
 
       - name: Compile Cython extensions
         run: |
-          cython ip2asn/ip2asn.pyx
+          cython nazo_ip2asn/ip2asn.pyx
 
       - name: Add execute permission to build script
         run: chmod +x ${{ github.workspace }}/.github/workflows/build-manylinux-wheels.sh

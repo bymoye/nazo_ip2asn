@@ -25,11 +25,11 @@ elif platform == "darwin":  # macOS
 if boost_include_dir:
     include_dirs.append(boost_include_dir)
 setup(
-    name="nazo_rand",
+    name="nazo_ip2asn",
     ext_modules=cythonize(
         Extension(
             name="",
-            sources=["ip2asn/ip2asn.pyx"],
+            sources=["nazo_ip2asn/ip2asn.pyx"],
             language="c++",
             extra_compile_args=extra_compile_args,
             extra_link_args=extra_link_args,
@@ -52,8 +52,8 @@ setup(
     license="MIT",
     package_data={
         "": [
-            "ip2asn/ip2asn.pyi",
-            "ip2asn/ip2asn.pyx",
+            "nazo_ip2asn/ip2asn.pyi",
+            "nazo_ip2asn/ip2asn.pyx",
         ]
     },
     include_package_data=True,
@@ -70,5 +70,5 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     python_requires=">=3.8",
-    packages=["ip2asn"],
+    packages=["nazo_ip2asn"],
 )
