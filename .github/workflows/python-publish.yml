@@ -130,6 +130,10 @@ jobs:
           $boost_msvc_version = "14.3"
           choco install boost-msvc-$boost_msvc_version
 
+      - name: Install Boost
+        if: startsWith(matrix.os, 'ubuntu')
+        run: sudo apt-get update && sudo apt-get install libboost-all-dev
+
       - name: Compile Cython extensions
         run: |
           cython ip2asn/ip2asn.pyx
