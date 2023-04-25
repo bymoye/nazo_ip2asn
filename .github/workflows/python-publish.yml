@@ -126,7 +126,11 @@ jobs:
       - name: Install Boost (non-linux)
         if: "!startsWith(matrix.os, 'ubuntu')"
         run: |
-          choco install boost-msvc-14.3
+          if [ ${{ matrix.os }} = 'windows-latest' ]; then
+            choco install boost-msvc-14.3
+          elif [ ${{ matrix.os }} = 'macos-latest' ]; then
+            brew install boost@1.81.0
+          fi
 
       - name: Install Boost (linux)
         if: startsWith(matrix.os, 'ubuntu')
