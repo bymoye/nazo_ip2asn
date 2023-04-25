@@ -131,8 +131,11 @@ jobs:
       - name: Install Boost (mac)
         if: startsWith(matrix.os, 'macos')
         run: |
-          brew install boost@1.76
-          brew install boost-devel@1.76.0
+          curl -L https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz -o boost.tar.gz
+          tar xzf boost.tar.gz
+          cd boost_1_81_0
+          ./bootstrap.sh --with-libraries=system,filesystem,program_options
+          ./b2 toolset=clang cxxflags="-std=c++17" linkflags="-std=c++17" -j$(sysctl -n hw.ncpu) install
 
       - name: Install Boost (linux)
         if: startsWith(matrix.os, 'ubuntu')
