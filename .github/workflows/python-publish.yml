@@ -123,14 +123,16 @@ jobs:
           pip install cython==0.29.34 --config-setting no_cython_compile=True --no-cache-dir
           python -m pip install --upgrade setuptools pip wheel
 
-      - name: Install Boost (non-linux)
-        if: "!startsWith(matrix.os, 'ubuntu')"
+      - name: Install Boost (windows)
+        if: startsWith(matrix.os, 'windows')
         run: |
-          if [ ${{ matrix.os }} = 'windows-latest' ]; then
             choco install boost-msvc-14.3
-          elif [ ${{ matrix.os }} = 'macos-latest' ]; then
-            brew install boost@1.76
-          fi
+
+      - name: Install Boost (mac)
+      if: startsWith(matrix.os, 'macos')
+      run: |
+          brew install boost@1.76
+          brew install boost-devel@1.76.0
 
       - name: Install Boost (linux)
         if: startsWith(matrix.os, 'ubuntu')
