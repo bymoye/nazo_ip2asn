@@ -1,7 +1,7 @@
 # cython: language_level=3
 # distutils: language = c++
-from libcpp.vector cimport vector
 from libcpp.string cimport string
+from libcpp.vector cimport vector
 from libcpp.pair cimport pair
 cdef extern from "ipasn.hpp" namespace "Address":
     ctypedef pair[string, string] DataPair

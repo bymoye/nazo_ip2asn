@@ -9,30 +9,30 @@ namespace Address
     using namespace boost::asio::ip;
     using namespace boost::algorithm;
     using namespace std;
-    typedef pair<string, string> DataPair;
+    typedef pair<std::string, std::string> DataPair;
 
     vector<address> ipv4;
     vector<address> ipv6;
     vector<DataPair> ipv4data;
     vector<DataPair> ipv6data;
 
-    inline size_t count_lines(const string &filename)
+    inline size_t count_lines(const std::string &filename)
     {
         ifstream file(filename);
         return count(istreambuf_iterator<char>(file), istreambuf_iterator<char>(), '\n');
     }
 
-    void read_file(const string &filename, vector<DataPair> &data, vector<address> &ip)
+    void read_file(const std::string &filename, vector<DataPair> &data, vector<address> &ip)
     {
         ifstream _file(filename);
-        string line;
+        std::string line;
 
         size_t num_lines = count_lines(filename);
         ip.reserve(num_lines);
         data.reserve(num_lines);
         while (getline(_file, line))
         {
-            vector<string> row;
+            vector<std::string> row;
             split(row, line, is_any_of("\t"));
 
             ip.push_back(make_address(row[0]));
@@ -47,7 +47,7 @@ namespace Address
         _file.close();
     }
 
-    void init(const string &ipv4file, const string &ipv6file)
+    void init(const std::string &ipv4file, const std::string &ipv6file)
     {
         read_file(ipv4file, ipv4data, ipv4);
         read_file(ipv6file, ipv6data, ipv6);
@@ -56,9 +56,9 @@ namespace Address
             cout << "\033[31m"
                  << "Error: ipasn.hpp: init(): ipv4 or ipv6 file is empty, Please go to https://iptoasn.com/ and download the latest files."
                  << endl
-                 << "ipv4 file: Please download the latest file from https://iptoasn.com/data/ip2asn-v4.tsv.gz and extract it to the same directory as the executable."
+                 << "ipv4 file: Please download the latest version file from https://iptoasn.com/data/ip2asn-v4.tsv.gz and unzip it."
                  << endl
-                 << "ipv6 file: Please download the latest file from https://iptoasn.com/data/ip2asn-v6.tsv.gz and extract it to the same directory as the executable."
+                 << "ipv6 file: Please download the latest version file from https://iptoasn.com/data/ip2asn-v6.tsv.gz and unzip it."
                  << "\033[0m" << endl;
         }
         else
@@ -83,7 +83,7 @@ namespace Address
         return distance(data.begin(), it) - 1;
     }
 
-    DataPair lookup(const string &ip)
+    DataPair lookup(const std::string &ip)
     {
         address _ip = make_address(ip);
         bool is_ipv4 = _ip.is_v4();

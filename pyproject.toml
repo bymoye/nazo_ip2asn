@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [metadata]
 name = "nazo_ip2asn"
-version = "0.0.1"
+version = "0.0.2"
 author = "bymoye"
 author_email = "s3moye@gmail.com"
 readme = "README.md"

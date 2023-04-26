@@ -3,9 +3,11 @@ from Cython.Build import cythonize
 from sys import platform
 import os
 
+
 def readme():
     with open("README.md") as f:
         return f.read()
+
 
 boost_include_dir = None
 include_dirs = []
@@ -45,7 +47,7 @@ setup(
     include_dirs=include_dirs,
     author="bymoye",
     author_email="s3moye@gmail.com",
-    version="0.0.1",
+    version="0.0.2",
     description="A ip2asn tools for python.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -67,6 +69,7 @@ setup(
         "Programming Language :: C++",
         "Operating System :: POSIX :: Linux",
         "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     python_requires=">=3.8",
