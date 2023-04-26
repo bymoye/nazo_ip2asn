@@ -1,8 +1,9 @@
 # ip2asn
 
-a iptoasn tools
+a [iptoasn](https://iptoasn.com/) tools
 
-download the latest file from https://iptoasn.com/data/ip2asn-v4.tsv.gz and extract it to the same directory as the executable.
+Please download the latest version and unzip：
+[ip2asn-v4.tsv](https://iptoasn.com/data/ip2asn-v4.tsv.gz) && [ip2asn-v6.tsv](https://iptoasn.com/data/ip2asn-v6.tsv.gz)
 
 ## Quickstart
 
