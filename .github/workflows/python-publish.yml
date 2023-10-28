@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Boost
         run: |
-          choco install boost-msvc-14.3
+          choco install boost-msvc-14.2
 
       - name: Install dependencies
         run: |
@@ -52,8 +52,8 @@ jobs:
           cython nazo_ip2asn/ip2asn.pyx
           python setup.py build_ext --inplace
         env:
-          BOOST_ROOT: C:\local\boost_1_81_0
-          BOOST_LIBRARYDIR: C:\local\boost_1_81_0\lib64-msvc-14.3\
+          BOOST_ROOT: C:\local\boost_1_74_0
+          BOOST_LIBRARYDIR: C:\local\boost_1_74_0\lib64-msvc-14.2\
 
   build:
     strategy:
@@ -128,7 +128,7 @@ jobs:
       - name: Install Boost (windows)
         if: startsWith(matrix.os, 'windows')
         run: |
-          choco install boost-msvc-14.3
+          choco install boost-msvc-14.2
 
       - name: Install Boost (mac)
         if: startsWith(matrix.os, 'macos')
