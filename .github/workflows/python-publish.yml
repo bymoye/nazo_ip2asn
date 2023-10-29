@@ -163,8 +163,8 @@ jobs:
         run: |
           python setup.py bdist_wheel
         env:
-          BOOST_ROOT: C:\local\boost_1_81_0
-          BOOST_LIBRARYDIR: C:\local\boost_1_81_0\lib64-msvc-14.3\
+          BOOST_ROOT: C:\local\boost_1_74_0
+          BOOST_LIBRARYDIR: C:\local\boost_1_74_0\lib64-msvc-14.2\
 
       - uses: actions/upload-artifact@v1
         with:
