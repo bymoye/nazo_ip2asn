@@ -1,1 +1,7 @@
 venv
+*.c
+*.so
+*.cpp
+*.o
+__pycache__
+.vscode

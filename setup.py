@@ -15,13 +15,13 @@ extra_compile_args = []
 extra_link_args = []
 
 if platform == "win32":
-    extra_compile_args = ["/std:c++17", "/O2"]
+    extra_compile_args = ["/std:c++23", "/O2"]
     boost_include_dir = os.environ.get("BOOST_ROOT")
 elif platform == "linux":
-    extra_compile_args = ["-std=c++17", "-O3"]
+    extra_compile_args = ["-std=c++23", "-O3"]
     extra_link_args = ["-Wl,-O3"]
 elif platform == "darwin":  # macOS
-    extra_compile_args = ["-std=c++17", "-O3"]
+    extra_compile_args = ["-std=c++23", "-O3"]
     extra_link_args = ["-Wl,-dead_strip"]
 
 if boost_include_dir:
@@ -47,7 +47,7 @@ setup(
     include_dirs=include_dirs,
     author="bymoye",
     author_email="s3moye@gmail.com",
-    version="0.0.3",
+    version="0.0.4",
     description="A ip2asn tools for python.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -66,6 +66,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Programming Language :: Cython",
         "Programming Language :: C++",
         "Operating System :: POSIX :: Linux",
