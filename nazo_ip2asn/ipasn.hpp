@@ -16,18 +16,16 @@ namespace Address
     vector<DataPair> ipv4data;
     vector<DataPair> ipv6data;
 
-    inline size_t count_lines(const std::string &filename)
-    {
-        ifstream file(filename);
-        return count(istreambuf_iterator<char>(file), istreambuf_iterator<char>(), '\n');
-    }
-
     void read_file(const std::string &filename, vector<DataPair> &data, vector<address> &ip)
     {
         ifstream _file(filename);
         std::string line;
 
-        size_t num_lines = count_lines(filename);
+        size_t num_lines = count(istreambuf_iterator<char>(_file), istreambuf_iterator<char>(), '\n');
+        // 重置文件流
+        _file.clear();
+        _file.seekg(0, ios::beg);
+
         ip.reserve(num_lines);
         data.reserve(num_lines);
         while (getline(_file, line))
@@ -80,7 +78,7 @@ namespace Address
         {
             return std::nullopt;
         }
-        return distance(data.begin(), it) - 1;
+        return distance(data.begin(), std::prev(it));
     }
 
     DataPair lookup(const std::string &ip)

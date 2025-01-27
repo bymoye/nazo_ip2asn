@@ -3,10 +3,10 @@
 from libcpp.string cimport string
 from libcpp.vector cimport vector
 from libcpp.pair cimport pair
-cdef extern from "ipasn.hpp" namespace "Address":
+cdef extern from "ipasn.hpp" namespace "Address" nogil:
     ctypedef pair[string, string] DataPair
     void init(const string &ipv4file, const string &ipv6file)
-    DataPair lookup(const string &ip)
+    DataPair lookup(const string &ip) except +
 
 cdef class Ip2Asn:
     def __cinit__(self,str ipv4file,str ipv6file):
