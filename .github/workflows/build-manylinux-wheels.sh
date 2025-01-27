@@ -15,7 +15,7 @@ wget https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.gz
 tar -xzvf boost_1_87_0.tar.gz
 cd boost_1_87_0
 ./bootstrap.sh --with-libraries=system,thread
-./b2 install
+sudo ./b2 install
 
 ML_PYTHON_VERSION="cp${PY_MAJOR}${PY_MINOR}-cp${PY_MAJOR}${PY_MINOR}"
 if [ "${PY_MAJOR}" -lt "4" -a "${PY_MINOR}" -lt "8" ]; then
