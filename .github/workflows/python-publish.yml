@@ -133,7 +133,7 @@ jobs:
       - name: Install Boost (mac)
         if: startsWith(matrix.os, 'macos')
         run: |
-          curl -L https://boostorg.jfrog.io/artifactory/main/release/1.87.0/source/boost_1_87_0.tar.gz -o boost.tar.gz
+          curl -L https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.gz -o boost.tar.gz
           tar xzf boost.tar.gz
           cd boost_1_87_0
           ./bootstrap.sh --with-libraries=system,filesystem,program_options
