@@ -11,8 +11,7 @@ PY_MINOR=${PYTHON_VERSION#*.}
 
 yum install -y wget
 
-ls /
-cd /usr/
+
 wget https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.gz
 tar -xzvf boost_1_87_0.tar.gz
 cd boost_1_87_0
