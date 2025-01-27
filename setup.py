@@ -15,13 +15,13 @@ extra_compile_args = []
 extra_link_args = []
 
 if platform == "win32":
-    extra_compile_args = ["/std:c++23", "/O2"]
+    extra_compile_args = ["/std:c++17", "/O2"]
     boost_include_dir = os.environ.get("BOOST_ROOT")
 elif platform == "linux":
-    extra_compile_args = ["-std=c++23", "-O3"]
+    extra_compile_args = ["-std=c++17", "-O3"]
     extra_link_args = ["-Wl,-O3"]
 elif platform == "darwin":  # macOS
-    extra_compile_args = ["-std=c++23", "-O3"]
+    extra_compile_args = ["-std=c++17", "-O3"]
     extra_link_args = ["-Wl,-dead_strip"]
 
 if boost_include_dir:
